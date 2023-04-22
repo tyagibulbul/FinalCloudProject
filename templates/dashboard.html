@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h2>Customer Engagement Dashboard</h2>
+  <h4>Load Data</h4>
+    <p>Click the button below to load the most recent data files into the database.</p>
+    <form method="post">
+        <input type="submit" value="Load Data">
+    </form>
+  <div class="row">
+    <div class="col-md-12">
+      {{ graph|safe }}
+    </div>
+  </div>
+  
+  <h4>Summary</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Demographic Factor</th>
+        <th>Count</th>
+        <th>Total Spend</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Household Size</td>
+        <td>{{ household_size_count }}</td>
+        <td>{{ household_size_spend }}</td>
+      </tr>
+      <tr>
+        <td>Presence of Children</td>
+        <td>{{ presence_of_children_count }}</td>
+        <td>{{ presence_of_children_spend }}</td>
+      </tr>
+      <tr>
+        <td>Income Range</td>
+        <td>{{ income_range_count }}</td>
+        <td>{{ income_range_spend }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  {{ js_files|safe }}
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  <style>
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    h4 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+    
+    form {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+    
+    input[type="submit"] {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Search Data Pulls{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <form method="POST" action="{{ url_for('search') }}">
+    {{ form.csrf_token }}
+    <div class="form-group">
+      <label for="hshd_num">Household Number:</label>
+      {{ form.hshd_num(class='form-control', placeholder='Enter household number') }}
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  {% if data %}
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th>Household Number</th>
+        <th>Basket Number</th>
+        <th>Date</th>
+        <th>Product Number</th>
+        <th>Department</th>
+        <th>Commodity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr>
+        <td>{{ row.HSHD_NUM }}</td>
+        <td>{{ row.BASKET_NUM }}</td>
+        <td>{{ row.PURCHASE_DATE }}</td>
+        <td>{{ row.PRODUCT_NUM }}</td>
+        <td>{{ row.DEPARTMENT }}</td>
+        <td>{{ row.COMMODITY }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+{% endblock %}

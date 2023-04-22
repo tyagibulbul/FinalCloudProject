@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h1 class="title">Household Data</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Household Number</th>
+				<th>Age Range</th>
+				<th>Marital Status</th>
+				<th>Income Range</th>
+				<th>Homeowner Status</th>
+				<th>Household Composition</th>
+				<th>Household Size</th>
+				<th>Number of Children</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for household, transaction, product in data %}
+				<tr>
+					<td>{{ household.HSHD_NUM }}</td>
+					<td>{{ household.AGE_RANGE }}</td>
+					<td>{{ household.MARITAL }}</td>
+					<td>{{ household.INCOME_RANGE }}</td>
+					<td>{{ household.HOMEOWNER }}</td>
+					<td>{{ household.HSHD_COMPOSITION }}</td>
+					<td>{{ household.HH_SIZE }}</td>
+					<td>{{ household.CHILDREN }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<h1 class="title">Transaction Data</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Basket Number</th>
+				<th>Household Number</th>
+				<th>Purchase Date</th>
+				<th>Product Number</th>
+				<th>Spend</th>
+				<th>Units</th>
+				<th>Store R</th>
+				<th>Week Number</th>
+				<th>Year</th>
+				<th>Department</th>
+				<th>Commodity</th>
+				<th>Brand Type</th>
+				<th>Natural/Organic Flag</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for household, transaction, product in data %}
+				<tr>
+					<td>{{ transaction.BASKET_NUM }}</td>
+					<td>{{ transaction.HSHD_NUM }}</td>
+					<td>{{ transaction.PURCHASE_DATE }}</td>
+					<td>{{ transaction.PRODUCT_NUM }}</td>
+					<td>{{ transaction.SPEND }}</td>
+					<td>{{ transaction.UNITS }}</td>
+					<td>{{ transaction.STORE_R }}</td>
+					<td>{{ transaction.WEEK_NUM }}</td>
+					<td>{{ transaction.YEAR }}</td>
+					<td>{{ product.DEPARTMENT }}</td>
+					<td>{{ product.COMMODITY }}</td>
+					<td>{{ product.BRAND_TY }}</td>
+					<td>{{ product.NATURAL_ORGANIC_FLAG }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}
+
+{% block styles %}
+	<style>
+		.table {
+			border-collapse: collapse;
+			width: 100%;
+			margin: 20px 0;
+			font-size: 0.9em;
+			min-width: 400px;
+			border-radius: 5px 5px 0 0;
+			overflow: hidden;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+		}
+
+		.table thead tr {
+			background-color: #009879;
+			color: #ffffff;
+			text-align: left;
+			font-weight: bold;
+		}
+
+		.table th,
+		.table td {
+			padding: 12px 15px;
+		}
+
+		.table tbody tr {
+			border-bottom: 1px solid #dddddd;
+		}
+
+		.table tbody tr:nth-of-type(even) {
+			background-color: #f3f3f3;
+		}
+
+		.table tbody tr:last-of-type {
+			border-bottom: 2px solid #009879;
+		}
+
+		.title {
+			margin-top: 40px;
+			font-size: 2rem;
+			font-weight: bold;
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: #009879;
+		}
+	</style>
+{% endblock %}

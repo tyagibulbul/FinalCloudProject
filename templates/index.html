@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home - My App
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    {% if current_user.is_authenticated %}
+      <h1>Welcome, {{ current_user.username }}!</h1>
+      <p>You are logged in.</p>
+    {% else %}
+      <h1>Welcome to My App</h1>
+      <p>Please register or log in to proceed.</p>
+      <ul>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+        <li><a href="{{ url_for('login') }}">Log in</a></li>
+      </ul>
+    {% endif %}
+  </div>
+{% endblock %}
