@@ -13,36 +13,9 @@
       {{ graph|safe }}
     </div>
   </div>
-  
-  <h4>Summary</h4>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Demographic Factor</th>
-        <th>Count</th>
-        <th>Total Spend</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Household Size</td>
-        <td>{{ household_size_count }}</td>
-        <td>{{ household_size_spend }}</td>
-      </tr>
-      <tr>
-        <td>Presence of Children</td>
-        <td>{{ presence_of_children_count }}</td>
-        <td>{{ presence_of_children_spend }}</td>
-      </tr>
-      <tr>
-        <td>Income Range</td>
-        <td>{{ income_range_count }}</td>
-        <td>{{ income_range_spend }}</td>
-      </tr>
-    </tbody>
-  </table>
 
   {{ js_files|safe }}
+
 {% endblock %}
 
 {% block styles %}
